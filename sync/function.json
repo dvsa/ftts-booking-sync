@@ -1,0 +1,13 @@
+{
+  "bindings": [
+    {
+      "name": "syncTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "%SYNC_CRON_TIMER%",
+      "runOnStartup": false,
+      "useMonitor": true
+    }
+  ],
+  "scriptFile": "../dist/sync/index.js"
+}

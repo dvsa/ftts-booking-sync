@@ -1,0 +1,41 @@
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false" count='50'>
+  <entity name="ftts_testhistory">
+    <attribute name="ftts_testhistoryid" alias="testHistoryId" />
+    <attribute name="ftts_teststatus" alias="testStatus" />
+    <attribute name="ftts_testdate" alias="testDate" />
+
+    <!-- the latest test results should be at the start of the array -->
+    <order attribute='ftts_testdate' descending='true' />
+
+    <link-entity name="contact" from="contactid" to="ftts_person" visible="false" link-type="outer" alias="person">
+      <attribute name="contactid" alias="candidateId" />
+    </link-entity>
+
+    <link-entity name="product" from="productid" to="ftts_testtype" link-type="inner" alias="product"> 
+        <attribute name="productnumber" alias="productNumber" />
+        <attribute name="ftts_testenginetesttype" alias="testEngineTestType" />
+    </link-entity>
+    
+    <!-- For LGV and PCV tests, get results with only test status "pass" and match the candidate id -->
+    <filter type="and">
+        <condition attribute="ftts_person" operator="eq" value="${candidateId}" />
+        <condition attribute="ftts_teststatus" operator="eq" value="${statusPass}" />
+        <condition attribute="ftts_testenginetesttype" entityname="product" operator="eq" value="${correspondingTestEngineTestType}" /> 
+    </filter>
+
+    <!-- Filter by origin - GB results only -->
+    <link-entity name="ftts_bookingproduct" from="ftts_bookingproductid" to="ftts_bookingproduct" visible="false" link-type="inner" alias="bookingproduct">
+      <attribute name="ftts_reference" alias="bookingProductReference" />
+      <link-entity name="account" from="accountid" to="ftts_ihttcid" link-type="inner" alias="bookingproduct.account"> 
+        <attribute name="ftts_remit" alias="testCentreRemit" />
+        <filter type="and">
+            <condition attribute="ftts_remit" operator="ne" value="${dva}" />
+        </filter>
+      </link-entity>
+
+      <link-entity name="ftts_booking" from="ftts_bookingid" to="ftts_bookingid" link-type="inner">
+        <attribute name="ftts_origin" alias="origin" />
+      </link-entity>
+    </link-entity>
+  </entity>
+</fetch>

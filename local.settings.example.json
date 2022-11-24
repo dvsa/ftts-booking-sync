@@ -1,0 +1,36 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureFunctionsJobHost__logging__logLevel__Default": "Trace",
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "mock-key",
+        "AZURE_TENANT_ID": "",
+        "AzureWebJobsStorage": "",
+        "CBIBOOKING_CLIENT_ID": "",
+        "CBIBOOKING_CLIENT_SECRET": "",
+        "CBIBOOKING_SCOPE": "",
+        "CBIBOOKING_TOKEN_URL": "",
+        "CRM_BASE_URL": "",
+        "CRM_CLIENT_ID": "",
+        "CRM_CLIENT_SECRET": "",
+        "CRM_MAX_RETRIES": "10",
+        "CRM_TOKEN_URL": "",
+        "CRM_SCOPE": "",
+        "DISABLE_EGRESS_FILTERING": false,
+        "EGRESS_CUSTOM_ALLOWED_ADDRESSES": "[]",
+        "FUNCTIONS_EXTENSION_VERSION": "~4",
+        "FUNCTIONS_WORKER_RUNTIME": "node",
+        "LOG_LEVEL": "debug",
+        "NEW_BOOKING_WINDOW": "72",
+        "NODE_ENV": "development",
+        "SARAS_MAX_RETRIES": "10",
+        "SARAS_URL": "",
+        "SYNC_CRON_TIMER": "0 */30 * * * *",
+        "USE_SARAS_STUB": "true",
+        "USER_ASSIGNED_ENTITY_CLIENT_ID": "",
+        "WEBSITE_NODE_DEFAULT_VERSION":"~14",
+        "WEBSITE_SITE_NAME": "ftts-booking-sync"
+    },
+    "Host": {
+        "CORS": "*"
+    }
+}
